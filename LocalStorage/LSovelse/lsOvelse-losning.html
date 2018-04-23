@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <meta charset="utf-8">
+        <title>Mine chilinoter</title>
+        <link rel="stylesheet" href="style.css">
+        
+    </head>
+    <body>
+        <div id="pagewrap">
+            <header>
+                    <h1>Chiliobservationer</h1>             
+            </header>
+            <form>
+                <fieldset><legend>Opret observation</legend>
+                    <label>Observationstype:</label><br>
+                    <select id = "obsType" name="obsType" >
+                        <option value="Plantesygdom">Plantesygdom</option>
+                        <option value="Insektangreb">insektangreb</option>
+                        <option value="Vækstobservation">Vækstobservation</option>
+                        <option value="Miljøobservation">Miljøobservation</option>
+                        <option value="Andet">Andet</option>
+
+                    </select><br>
+                    <label>Observation:</label><br>
+                    <textarea id="obsTekst" name="obsTekst"></textarea><br>
+                    <br>
+                    <input type="Button" value="Gem" onclick="gemObservation()">
+                </fieldset>
+            </form>
+            <section id="observationer">
+                <div class="placeholder">Der er pt. ingen observationer</div>
+            </section><!-- main -->
+            <footer>
+                    <p>&copy; Copyright Niels Østergaard 2018</p>
+            </footer>
+        </div><!-- pagewrap -->
+    </body>
+    
+    
+    <script>
+        var antalObs = 0;
+        
+        
+        
+        function gemObservation(){
+            antalObs++; //Vi starter med at tælle en op i forhold til antal læste, så det næste vi gemmer får tallet der er 1 højere
+            
+            //alert('Gemmer: ' + antalObs + '. ' + document.getElementById("obsType").value + '. '+ document.getElementById("obsTekst").value); //til testformål
+            
+            localStorage.antalObs = antalObs; 
+            eval('localStorage.obsType' + antalObs + ' = document.getElementById("obsType").value'); //Eval sætter tallet ind, inden statement afvikles. Dermed gemmes første gang som localStorage.obsType1
+            eval('localStorage.obsTekst' + antalObs + ' = document.getElementById("obsTekst").value');
+        }
+        
+        
+        
+        function laesAntalObservationer(){
+            if(!isNaN(localStorage.antalObs)){ //hvis der findes et tal
+                antalObs = parseInt(localStorage.antalObs); //vi læser strengen, og konverterer den til et tal, så vi kan regne på den
+            } else {
+                antalObs = 0; //der var ikke nogen, så vi sætter den til 0
+            }
+            
+            //alert('Antal observationer (læst fra LS):' + antalObs); //til testformål
+        }
+        
+        
+        
+        function indlaesObservationer(){
+            var streng = "";
+            for(i=1;i< (antalObs+1);i++){//Vi gennemløber
+                //alert('Indlæser nu nr:' + i + ' af '+antalObs); //til testformål
+                
+                streng += '<div class="obsTypeClass">' + eval('localStorage.obsType'+i) +'</div>'; //her indlæses type med det aktuelle nummer, og sættes ind i en htmlstreng.
+                streng += '<div class="obsTekstClass">' + eval('localStorage.obsTekst' + i) +'</div><br>'; //og her er det teksten med nummeret..
+            }
+            document.getElementById("observationer").innerHTML = streng;
+        }
+        
+        laesAntalObservationer(); //Vi skal have styr på hvor mange observationer der ligger på denne browser
+        indlaesObservationer(); //Så indlæser vi observationer
+        
+        
+        
+
+    </script>
+</html>
