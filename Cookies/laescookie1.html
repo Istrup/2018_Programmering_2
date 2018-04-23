@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Læs cookie1</title>
+</head>
+
+<body>
+	<div id="indhold"></div>
+</body>
+</html>
+
+
+<script>
+	function visIndhold(txt){
+		document.getElementById("indhold").innerHTML = txt;	
+	}
+	
+	var c = document.cookie;
+	visIndhold("siden har gemt: " + c);
+</script>

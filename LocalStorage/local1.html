@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Local Storage</title>
+</head>
+
+<body>
+	<div id="nu">Vi taeller</div>
+</body>
+</html>
+
+<script>
+
+if(localStorage.antal){ //hvis der findes et tal
+    localStorage.antal = parseInt(localStorage.antal) + 1; //så lægger vi en til
+} else {
+	localStorage.antal = 1;
+}
+    
+document.getElementById("nu").innerHTML = "Du har besøgt denne side: " + localStorage.antal + " gange!";
+</script>
+
+
+
+
+
+
+
+/*
+Vær opmærksom på at linie 15 antager at hvis der er noget, så er det et tal. Men er det en tekst vil det give en fejl i linie 16. Herfra vil koden vise fejl selvom den er korrekt, da der sandsynligvis står NaN i strengen.
+Det kan rettes ved at tage en kopi af linie 18, og sætte ind før if en enkelt gang, køre filen og derefter slette linien igen..
+*/

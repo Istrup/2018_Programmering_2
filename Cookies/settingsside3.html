@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Indstillinger - local storage</title>
+        <style>
+        	#container {
+				width: 50%;
+				background-color:#22AAEE;
+				margin:auto;
+				padding: 2em;
+			}
+        </style>
+        </head>
+    <body>
+    	<div id="container">
+        <h1 id="overskrift">Mine favoritindstillinger</h1>
+        <p class="brodtekst">Brødteksten her er et eksempel på en helt almindelig brødtekst. Der er ikke mange dikkedarer med den.</p>
+    	<form>
+        	<label for="overskriftsfarve">Overskriftsfarve</label>
+            <input type="color" id="overskriftsfarve" name="overskriftsfarve" value=""><br>
+            
+            <label for="rammefarve">Rammefarve</label>
+            <input type="color" id="rammefarve" name="rammefarve" value=""><br>
+            
+            <label for="baggrundsfarve">Baggrundsfarve</label>
+            <input type="color" id="baggrundsfarve" name="baggrundsfarve" value=""><br>
+            <br>
+        	<input type="button" onClick="laesIndstillingerFraForm()" value="Gem farvevalg">
+        	
+        </form>
+        </div>
+    </body>
+</html>
+<script>
+	var baggrundsfarve, rammefarve, overskriftsfarve; //globale variable
+
+	function laesIndstillingerFraForm(){
+		overskriftsfarve = document.getElementById("overskriftsfarve").value;
+		rammefarve = document.getElementById("rammefarve").value;
+		baggrundsfarve = document.getElementById("baggrundsfarve").value;
+		skiftIndstillinger();
+	}
+
+	function skiftIndstillinger(){
+		document.getElementById("overskrift").style.color = overskriftsfarve;
+		document.getElementById("container").style.backgroundColor = rammefarve;
+		document.body.style.backgroundColor = baggrundsfarve;
+		gemFarverIStorage();
+	}
+	
+	function laesFarveFraStorage(){
+		baggrundsfarve = localStorage.baggrundsfarve;
+		rammefarve = localStorage.rammefarve;
+		overskriftsfarve = localStorage.overskriftsfarve;
+		alert("hentet: " + baggrundsfarve);	
+	}
+		
+	
+	function laesIndstillingerFraForm(){
+		overskriftsfarve = document.getElementById("overskriftsfarve").value;
+		rammefarve = document.getElementById("rammefarve").value;
+		baggrundsfarve = document.getElementById("baggrundsfarve").value;
+		skiftIndstillinger();
+	}
+
+	function skiftIndstillinger(){
+		document.getElementById("overskrift").style.color = overskriftsfarve;
+		document.getElementById("container").style.backgroundColor = rammefarve;
+		document.body.style.backgroundColor = baggrundsfarve;
+		gemFarveCookie(overskriftsfarve, rammefarve, baggrundsfarve);
+	}
+	
+	
+	function gemFarverIStorage(){ 
+		localStorage.overskriftsfarve = overskriftsfarve;
+		localStorage.rammefarve = rammefarve;
+		localStorage.baggrundsfarve = baggrundsfarve;
+		alert("gemt");
+	}
+	
+	function opdaterFormValues(){
+		document.getElementById("overskriftsfarve").value = overskriftsfarve;
+		document.getElementById("rammefarve").value = rammefarve;
+		document.getElementById("baggrundsfarve").value = baggrundsfarve;
+			
+	}
+	
+	laesFarveFraStorage();
+	skiftIndstillinger();
+	opdaterFormValues();
+</script>

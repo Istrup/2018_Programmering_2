@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Indstillinger</title>
+        <style>
+        	#container {
+				width: 50%;
+				background-color:#22AAEE;
+				margin:auto;
+				padding: 2em;
+			}
+        </style>
+        </head>
+    <body>
+    	<div id="container">
+        <h1 id="overskrift">Mine favoritindstillinger</h1>
+        <p class="brodtekst">Brødteksten her er et eksempel på en helt almindelig brødtekst. Der er ikke mange dikkedarer med den.</p>
+    	<form>
+        	<label for="overskriftsfarve">Overskriftsfarve</label>
+            <input type="color" id="overskriftsfarve" name="overskriftsfarve" value=""><br>
+            
+            <label for="rammefarve">Rammefarve</label>
+            <input type="color" id="rammefarve" name="rammefarve" value=""><br>
+            
+            <label for="baggrundsfarve">Baggrundsfarve</label>
+            <input type="color" id="baggrundsfarve" name="baggrundsfarve" value=""><br>
+            <br>
+        	<input type="button" onClick="laesIndstillingerFraForm()" value="Gem farvevalg">
+        	
+        </form>
+        </div>
+    </body>
+</html>
+<script>
+	var baggrundsfarve, rammefarve, overskriftsfarve; //globale variable
+
+	function laesIndstillingerFraForm(){
+		overskriftsfarve = document.getElementById("overskriftsfarve").value;
+		rammefarve = document.getElementById("rammefarve").value;
+		baggrundsfarve = document.getElementById("baggrundsfarve").value;
+		skiftIndstillinger();
+	}
+
+	function skiftIndstillinger(){
+		document.getElementById("overskrift").style.color = overskriftsfarve;
+		document.getElementById("container").style.backgroundColor = rammefarve;
+		document.body.style.backgroundColor = baggrundsfarve;
+		gemFarveCookie(overskriftsfarve, rammefarve, baggrundsfarve);
+	}
+	
+		function gemFarveCookie(ovrsk, ramme, baggr){ //Obs, der er ikke udløb på
+		document.cookie = "overskriftsfarve="+ovrsk;
+		document.cookie = "rammefarve=" + ramme;
+		document.cookie = "baggrundsfarve="+baggr;
+	}
+	
+	function laesFarveCookie(){
+		baggrundsfarve = getCookie("baggrundsfarve");
+		rammefarve = getCookie("rammefarve");
+		overskriftsfarve = getCookie("overskriftsfarve");
+	}
+		
+	function getCookie(sogenavn) {			
+		var name = sogenavn + "=";				 
+		var ca = document.cookie.split(';');	
+		for(var i=0; i<ca.length; i++) { 
+			var c = ca[i];				
+			while (c.charAt(0)==' ') c = c.substring(1);
+			if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+		}
+		return "";
+	}
+	
+	function opdaterFormValues(){
+		document.getElementById("overskriftsfarve").value = overskriftsfarve;
+		document.getElementById("rammefarve").value = rammefarve;
+		document.getElementById("baggrundsfarve").value = baggrundsfarve;
+	}
+	
+	laesFarveCookie();
+	skiftIndstillinger();
+	opdaterFormValues();
+</script>

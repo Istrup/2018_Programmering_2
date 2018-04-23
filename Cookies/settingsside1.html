@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Indstillinger</title>
+        <style>
+        	#container {
+				width: 50%;
+				background-color:#22AAEE;
+				margin:auto;
+				padding: 2em;
+			}
+        </style>
+        </head>
+    <body>
+    	<div id="container">
+        <h1 id="overskrift">Mine favoritindstillinger</h1>
+        <p class="brodtekst">Brødteksten her er et eksempel på en helt almindelig brødtekst. Der er ikke mange dikkedarer med den.</p>
+    	<form>
+        	<label for="overskriftsfarve">Overskriftsfarve</label>
+            <input type="color" id="overskriftsfarve" name="overskriftsfarve" value=""><br>
+            
+            <label for="rammefarve">Rammefarve</label>
+            <input type="color" id="Rammefarve" name="rammefarve" value=""><br>
+            
+            <label for="baggrundsfarve">Baggrundsfarve</label>
+            <input type="color" id="baggrundsfarve" name="baggrundsfarve" value=""><br>
+            <br>
+        	<input type="button" onClick="skiftIndstillinger()" value="Gem farvevalg">
+        	
+        </form>
+        </div>
+    </body>
+</html>
+<script>
+	function skiftIndstillinger(){
+		var overskriftsfarve = document.getElementById("overskriftsfarve").value;
+		document.getElementById("overskrift").style.color = overskriftsfarve;
+		
+		var rammefarve = document.getElementById("rammefarve").value;
+		document.getElementById("container").style.backgroundColor = rammefarve;
+		
+		var baggrundsfarve = document.getElementById("baggrundsfarve").value;
+		document.body.style.backgroundColor = baggrundsfarve;
+	}
+</script>

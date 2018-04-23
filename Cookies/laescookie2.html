@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Læs cookie1</title>
+</head>
+
+<body>
+	<div id="indhold"></div>
+</body>
+</html>
+
+
+<script>
+	function visIndhold(txt){
+		document.getElementById("indhold").innerHTML = txt;	
+	}
+	
+	var c = document.cookie;
+	visIndhold("<strong>Siden har gemt:</strong> " + c);
+	
+	
+	
+	
+	function getCookie(cname) {				//funktionen kaldes med en streng med navnet på en cookie vi leder efter
+		var name = cname + "=";				//Vi tilføjer = 
+		var ca = document.cookie.split(';');	//Vi indlæser alle cookies der hører til siden, og splitter dem med
+		for(var i=0; i<ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0)==' ') c = c.substring(1);
+			if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+		}
+		return "";
+	}
+	
+	//visIndhold(getCookie("svaretpaadetstorespoergsmaal"));
+
+
+</script>
