@@ -51,6 +51,7 @@
             localStorage.antalObs = antalObs; 
             eval('localStorage.obsType' + antalObs + ' = document.getElementById("obsType").value'); //Eval sætter tallet ind, inden statement afvikles. Dermed gemmes første gang som localStorage.obsType1
             eval('localStorage.obsTekst' + antalObs + ' = document.getElementById("obsTekst").value');
+            indlaesObservationer();
         }
         
         
@@ -72,8 +73,8 @@
             for(i=1;i< (antalObs+1);i++){//Vi gennemløber
                 //alert('Indlæser nu nr:' + i + ' af '+antalObs); //til testformål
                 
-                streng += '<div class="obsTypeClass">' + eval('localStorage.obsType'+i) +'</div>'; //her indlæses type med det aktuelle nummer, og sættes ind i en htmlstreng.
-                streng += '<div class="obsTekstClass">' + eval('localStorage.obsTekst' + i) +'</div><br>'; //og her er det teksten med nummeret..
+                streng += '<h4 class="obsTypeClass">' + eval('localStorage.obsType'+i) +'</h4>'; //her indlæses type med det aktuelle nummer, og sættes ind i en htmlstreng.
+                streng += '<p class="obsTekstClass">' + eval('localStorage.obsTekst' + i) +'</p><br>'; //og her er det teksten med nummeret..
             }
             document.getElementById("observationer").innerHTML = streng;
         }

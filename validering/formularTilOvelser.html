@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Formularer - Eksempel 1</title>
+<link href="form.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<form name="tilmelding" onsubmit="return validering()">
+	<H1>Tilmelding til sommerløbet 2018</H1>
+    	<div id="fejlfelt" class="fejlfelt">
+                <span class="fejltekst" id="fejltekst">Der er ingen fejl!</span>
+        </div>     
+        <div id="succesfelt" class="succesfelt">
+                <span class="succestekst" id="succestekst">Tak for din tilmelding...</span>
+        </div>
+        <div id="advarselfelt" class="advarselfelt">
+                <span class="advarseltekst" id="advarseltekst">Der er ingen fejl!</span>
+        </div>
+  <fieldset id="detaljer">
+    	<legend><span>Tilmeldingsdetaljer</span></legend>
+            <p id="lobevalg">Jeg vil:<br>
+              <label>
+                <input type="radio" name="lobetype" value="lobe" id="lobe">
+                <span class="ledeteksthojre">Løbe</span></label>
+              <br>
+              <label>
+                <input type="radio" name="lobetype" value="gaa" id="gaa">
+                <span class="ledeteksthojre">Gå</span></label>
+              <br>
+            </p>
+              <p id="distancevalg">
+                <label>Distance:
+                  <select id="distance" name="distance">
+                            <option value="0">Vælg distance</option>
+                            <option value="3">3 km</option>
+                            <option value="5">5 km</option>
+                            <option value="10">10 km</option>
+                            <option value="22">22,2 km</option>
+                  </select>
+                </label>
+               </p>
+                <p id="gavevalg">
+                <label>Jeg ønsker følgende to gaver (vælg maks 2!):
+                </label>
+                
+                <br>
+                  <label>
+                    <input type="checkbox" name="tilvalg" value="vest" id="tilvalg_vest">
+                    <span class="ledeteksthojre">Løbevest</span></label>
+                  <br>
+                  <label>
+                    <input type="checkbox" name="tilvalg" value="dunk" id="tilvalg_dunk">
+                    <span class="ledeteksthojre">Drikkedunk</span></label>
+                  <br>
+                  <label>
+                    <input type="checkbox" name="tilvalg" value="foto" id="tilvalg_foto">
+                    <span class="ledeteksthojre">Målfoto</span></label>
+                  <br>
+                </p>
+  </fieldset>
+  <fieldset id="deltagerinfo">
+  	<legend><span>Information om deltageren</span></legend>
+  	<label>Fornavn:
+    	<input type="text" size="30" name="fornavn" id="fornavn" />
+    </label><br><br>
+    <label>Efternavn:
+    	<input type="text" size="30" name="efternavn" id="efternavn" />
+    </label><br><br>
+    <label>Adresse:
+    	<input type="text" size="30" name="adresse" id="adresse" />
+    </label><br><br>
+    <label>Postnr og by:
+    	<input type="text" size="30" name="postby" id="postby" />
+    </label><br><br>
+    <label>Mobiltelefon:
+    	<input type="text" size="30" name="mobil" id="mobil" />
+    </label><br><br>
+    <label>Email:
+    	<input type="text" size="30" name="email" id="email" />
+    </label><br><br>  	
+  </fieldset>
+  <fieldset>
+  <legend><span>Gennemfør tilmelding</span></legend>
+  				<p>
+                  <label>
+                    <input type="checkbox" name="accept" value="accept" id="accept">
+                    <span class="ledeteksthojre">Jeg accepterer <a href="#">betingelserne for tilmelding</a></span></label>
+                  <br>
+                  
+                </p>
+    <button type="submit">Tilmeld til forårsløbet</button><br>
+    </fieldset>
+</form>
+
+<script src="formvalidering.js"></script>
+</body>
+</html>
