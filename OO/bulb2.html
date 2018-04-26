@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bulb2</title>
+<style>
+	body {
+		background-color: black;
+		padding: 0;
+	}
+</style>
+	<script>
+		//Dette eksempel anvender "Object constructor" notationsformen
+
+		function lys(nmn, tndt){ //Vi starter indkapslingen i en klasse
+			this.name = nmn;  //Vi navngiver dem, så vi kan holde styr på forskellen (kunne også have hedder id)
+			this.taendt = tndt; //Tændt er en egenskab vi har brug for at modellere
+			
+			this.skift = function(){ //En metode til at tænde  eller slukke lyset
+				if (this.taendt){ //vi tester på egenskaben, er den i forvejen tænd, så slukker vi
+					this.taendt = false;  //sætter egenskaben til slukket
+					document.getElementById(this.name).src = "grafik/bulb_off.png"; // DOM'en skal vise en anden fil
+				} else { // den derimod slukket
+					this.taendt = true; //Så sætter vi den til tændt
+					document.getElementById(this.name).src = "grafik/bulb_on.png"; //og skifter billedet til tændt
+				} //Her slutter if-else
+			} //Her slutter skifte-metoden
+		}  //Her slutter beskrivelsen af klassen
+		
+	
+	
+	//Når "Object Constructor" notationsformen anvendes, kades construcor-functionen som en del af oprettelse,
+	// og skal derfor ikke kaldes ved instantiering
+	// Vi anvender "new" angiver klassen og sætter parametre på i en enkelt linie.
+	var lys1 = new lys("lys1", false); //Her opretter vi et objekt
+	var lys2 = new lys("lys2", false); //og endnu et ANDET objekt af SAMME klasse!		
+	</script>
+</head>
+<body>
+    <img id="lys1" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys1" />
+    <img id="lys2" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys2" />
+</body>
+</html>
+<script>
+	lys2.skift();
+</script>

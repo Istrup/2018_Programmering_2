@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bulb3</title>
+<style>
+	body {
+		background-color: black;
+		padding: 0;
+	}
+	img {
+		width: 9%;
+		height: 9%;	
+	}
+</style>
+	<script>
+	//Dette eksempel anvender "Object constructor" notationsformen
+		function lys(nmn, tndt){ //Vi starter indkapslingen i en klasse
+			this.name = nmn;  //Vi navngiver dem, så vi kan holde styr på forskellen (kunne også have hedder id)
+			this.taendt = tndt; //Tændt er en egenskab vi har brug for at modellere
+			
+			this.skift = function(){ //En metode til at tænde  eller slukke lyset
+				if (this.taendt){ //vi tester på egenskaben, er den i forvejen tænd, så slukker vi
+					this.taendt = false;  //sætter egenskaben til slukket
+					document.getElementById(this.name).src = "grafik/bulb_off.png"; // DOM'en skal vise en anden fil
+				} else { // den derimod slukket
+					this.taendt = true; //Så sætter vi den til tændt
+					document.getElementById(this.name).src = "grafik/bulb_on.png"; //og skifter billedet til tændt
+				} //Her slutter if-else
+			} //Her slutter skifte-metoden
+		}  //Her slutter beskrivelsen af klassen
+	
+	
+	
+	var lys1 = new lys("lys1", false); //Her opretter vi et objekt
+	var lys2 = new lys("lys2", false); //og endnu et objekt af SAMME klasse!	
+	var lys3 = new lys("lys3", false); //og endnu et objekt af SAMME klasse!	
+	var lys4 = new lys("lys4", false); //og endnu et objekt af SAMME klasse!	
+	var lys5 = new lys("lys5", false); //og endnu et objekt af SAMME klasse!	
+	var lys6 = new lys("lys6", false); //og endnu et objekt af SAMME klasse!	
+	var lys7 = new lys("lys7", false); //og endnu et objekt af SAMME klasse!	
+	var lys8 = new lys("lys8", false); //og endnu et objekt af SAMME klasse!
+	var lys9 = new lys("lys9", false); //og endnu et objekt af SAMME klasse!	
+	var lys10 = new lys("lys10", false); //og et sidste objekt af SAMME klasse!	
+	
+			
+	</script>
+</head>
+<body>
+    <img id="lys1" src="../OO/grafik/bulb_off.png" width="35" height="54" alt="lys1" />
+    <img id="lys2" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys2" />
+    <img id="lys3" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys3" />
+    <img id="lys4" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys4" />
+    <img id="lys5" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys5" />
+    <img id="lys6" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys6" />
+    <img id="lys7" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys7" />
+    <img id="lys8" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys8" />
+    <img id="lys9" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys9" />
+    <img id="lys10" src="../OO/grafik/bulb_off.png" width="359" height="540" alt="lys10" />
+</body>
+</html>
+
+<script>
+
+
+
+	for (t=1;t<=10;t=t+2){
+		eval('lys' + t + '.skift();');
+	
+	}
+    
+    //lys4.skift();
+    //lys6.skift();
+	
+</script>

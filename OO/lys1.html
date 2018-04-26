@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>OOP Lyseksempel 1</title>
+        <script>
+        	// -------------- Herunder er klassen ---------------
+            var lysKlasse = {
+                constructor: function fn0(nmn, tndt){ 	//Constructor-metode, der sætter egenskaber
+                    this._navn = nmn;					//Sætter egenskaben navn
+                    this._taendt = tndt;					//Sætter egenskaben tændt
+                },
+                status: function fn1(){					//Status-metode, der viser egenskaber
+                    alert("Objektets navn: " + this._navn + " og tændt: " + this._taendt);
+                }
+            };
+        	// -------------- Her slutter klassen ---------------
+            
+            
+            //Så er klassen oprettet, nu skal vi prøve at instantiere et par objekter:
+            var lys1 = Object.create(lysKlasse); //Her oprettes objektet
+                lys1.constructor("lys1", false); //Her initieres det med de to værdier
+                
+            var lys2 = Object.create(lysKlasse);
+                lys2.constructor("lys2", true);
+        
+            //Så lad os se om vi kan kalde dem?
+            lys1.status();
+            lys2.status();
+            
+        </script>
+    </head>
+    
+    <body>
+    </body>
+</html>

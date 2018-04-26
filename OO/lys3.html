@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OOP Lyseksempel 3</title>
+	<script>
+		//Her udvides klassen med en egenskab der modellerer længden
+	
+		var lysKlasse = {
+			constructor: function fn0(nmn, tndt, lngd){ //Vi kalder den første funktion, hvor vi opretter objektet "constructor"
+				this._navn = nmn;
+				this._taendt = tndt;	
+				this._laengde = lngd;			
+			},
+			status: function fn1(){
+				//return  this.na
+				alert("Navn: " + this._navn + " og tændt: " + this._taendt + ". og længden er pt: " + this._laengde + " mm.");
+			},
+			
+			skift: function fn2(){
+				if(this._taendt == true){
+					this._taendt = false;
+					
+				} else {
+					this._taendt = true;
+					
+				} 
+			},  //Slut på metoden skift
+			
+			braend: function fn3(brlng){ //parameteren angiver hvor meget der skal brændes af
+				if (this._laengde >= 0) {//Er der noget at brænde af, eller er den brændt ned?
+					if (this._laengde >= brlng){ //er lyset længere end det vi vil brænde ned?
+						this._laengde -= brlng; //så trækker vi stykket fra længden
+					} else { // ellers 
+						this._laengde = 0; //sætter vi den til at være brændt ned (men ikke negativ længde)
+						this._taendt = false; //og vi slukker den
+					}
+				} else { //Så må den være brændt ned, og vi slukker den
+					this._taendt = false;					
+				}
+			}
+		};
+		
+		//Så er klassen oprettet, nu skal vi prøve at instantiere et par objekter:
+		var lys1 = Object.create(lysKlasse); //Her oprettes objektet
+			lys1.constructor("lys1", true, 150); //Her initieres det med de to værdier
+			
+		//Vi viser lige at klassen kan bruges til at oprette mange objekter af samme klasse, ved at lave en mere..
+		var lys2 = Object.create(lysKlasse);
+			lys2.constructor("lys2", true, 130);
+		
+		
+		//Så lad os se om vi kan kalde dem?
+		lys1.status(); 	//Vi tjekker status på lys1
+		lys2.status(); 	//og på lys2
+	
+		//lad os braende et par cm af lys2
+		lys2.braend(20);
+		lys2.status();
+		
+		//Så brænder vi den helt ned
+		lys2.braend(170);
+		lys2.status(); //bliver den kortere end nul? slukker den
+		
+</script>
+</head>
+
+<body>
+</body>
+</html>

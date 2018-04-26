@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>OOP Lyseksempel 2</title>
+	<script>
+		//Her udvides klassen med en metode til at skifte tilstand fra tændt til slukket
+	
+		var lysKlasse = {
+			constructor: function fn0(nmn, tndt){ 
+				this._navn = nmn;
+				this._taendt = tndt;				
+			},
+			status: function fn1(){			
+				//return  this.na
+				alert("Objektets navn: " + this._navn + " og tændt: " + this._taendt);
+			},
+			
+			skift: function fn2(){ 			//Metode der skifter mellem tændt og ikke tændt
+				if(this._taendt == true){	//Hvis egenskaben tændt er sand
+					this._taendt = false;	//- så sætter vi den til falsk
+				} else {						//ellers
+					this._taendt = true;		//sætter vi den til sand
+				}							//slut på if-else
+			} 								//Slut på metode
+		};
+		
+		//Så er klassen oprettet, nu skal vi prøve at instantiere et par objekter:
+		var lys1 = Object.create(lysKlasse); //Her oprettes objektet
+			lys1.constructor("lys1", true); //Her initieres det med de to værdier
+			
+		//Vi viser lige at klassen kan bruges til at oprette mange objekter af samme klasse,
+		//ved at lave en mere..
+		var lys2 = Object.create(lysKlasse);
+			lys2.constructor("lys2", true);
+		
+		//Så lad os se om vi kan kalde dem?
+		lys1.status(); 	//Vi tjekker status på lys1
+		lys2.status(); 	//og på lys2
+		lys1.skift();	//Så skifter vi status på lys1
+		lys1.status();	//og tjekker at den er skiftet!
+    
+    </script>
+</head>
+
+<body>
+</body>
+</html>
