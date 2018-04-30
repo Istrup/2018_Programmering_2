@@ -12,5 +12,5 @@ $conn = new mysqli($servername, $username, $password, $database); //Her opretter
 if ($conn->connect_error) {  //Vi tjekker om forbindelsen mislykkedes
     die("Forbindelse mislykkedes: " . $conn->connect_error);
 } 
-//echo "Forbundet til databasen<br>"; //udkommenteres når vi lige har set at der er hul igennem
+echo "Forbundet til databasen<br>"; //udkommenteres når vi lige har set at der er hul igennem
 ?>
